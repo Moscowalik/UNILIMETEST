@@ -10,7 +10,7 @@
           "settings": {
             "text": "FREE SHIPPING | 100% MONEY BACK GUARANTEE",
             "text_alignment": "center",
-            "color_scheme": "background-1",
+            "color_scheme": "background-3",
             "link": ""
           }
         }
@@ -18,7 +18,8 @@
       "block_order": [
         "announcement-bar-0"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "header": {
       "type": "header",
