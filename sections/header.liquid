@@ -197,29 +197,43 @@ display: flex;
   <div>
     <div class="header__top-wrap">
       <div class="page-width">
-        <ul class='header__top-list'>
-          <li class="header__top-item accountLogin"><a href="/account/login"
-              class="header__icon header__icon--account link focus-inset small-hide">
-              <span>Log in</span>
-            </a>
-          </li>
+        <div class='header__top-list'>
+      <div class="header__icons">
+        {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+          {% render 'icon-account' %}
+          <span class="visually-hidden">
+            {%- liquid
+            if customer
+            echo 'customer.account_fallback' | t
+            else
+            echo 'customer.log_in' | t
+            endif
+            -%}
+          </span>
+        </a>
+        {%- endif -%}
 
-          <li class="header__top-item language-selector">
-            <div class="language-item">
-              <img class="language-img"
-                src="https://shopify-script-tags.s3.eu-west-1.amazonaws.com/tlab-svg-flags/gb.svg">
-              <span class="language-text">English</span>
-            </div>
-          </li>
-          <li class="header__top-item navIconBox">
-            <a href="/cart" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-              <span class="icon-cart"></span>
-              <div class="cart-count-bubble"><span aria-hidden="true">0</span><span class="visually-hidden">0
-                  items</span>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+          {%- liquid
+          if cart == empty
+          render 'icon-cart-empty'
+          else
+          render 'icon-cart'
+          endif
+          -%}
+          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+          {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+          {%- endif -%}
+        </a>
+      </div>
+        </div>
       </div>
     </div>
     <header
@@ -427,43 +441,9 @@ display: flex;
         {%- if request.page_type == 'index' -%}
       </h1>
       {%- endif -%}
-
-
-      <div class="header__icons">
-        {%- if shop.customer_accounts_enabled -%}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-          {% render 'icon-account' %}
-          <span class="visually-hidden">
-            {%- liquid
-            if customer
-            echo 'customer.account_fallback' | t
-            else
-            echo 'customer.log_in' | t
-            endif
-            -%}
-          </span>
-        </a>
-        {%- endif -%}
-
-        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {%- liquid
-          if cart == empty
-          render 'icon-cart-empty'
-          else
-          render 'icon-cart'
-          endif
-          -%}
-          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-          {%- if cart != empty -%}
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%} <span aria-hidden="true">{{ cart.item_count }}</span>
-              {%- endif -%}
-              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-          </div>
-          {%- endif -%}
-        </a>
-      </div>
+<div class="header__question-block">
+      <a href="tel:18885364211"><span>Questions?</span><span>1-888-536-4211</span></a>
+    </div>
     </header>
   </div>
 
