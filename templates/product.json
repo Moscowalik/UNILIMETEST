@@ -47,6 +47,20 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "04905482-a782-477a-8973-add80efb8c34": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.testtitlemetafield.value }}",
+            "text_style": "body"
+          }
+        },
+        "63fb491b-f539-493a-b4b7-9a61e5ce8276": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.testdescrmetafield.value }}",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
@@ -57,7 +71,9 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "04905482-a782-477a-8973-add80efb8c34",
+        "63fb491b-f539-493a-b4b7-9a61e5ce8276"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -72,42 +88,6 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
-      }
-    },
-    "72f38c22-2123-4c7e-95b0-c485ff186b53": {
-      "type": "featured-product",
-      "blocks": {
-        "template--17997398376726__72f38c22-2123-4c7e-95b0-c485ff186b53-1677161431324ee883-1": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "template--17997398376726__72f38c22-2123-4c7e-95b0-c485ff186b53-1677161431324ee883-0": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        }
-      },
-      "block_order": [
-        "template--17997398376726__72f38c22-2123-4c7e-95b0-c485ff186b53-1677161431324ee883-1",
-        "template--17997398376726__72f38c22-2123-4c7e-95b0-c485ff186b53-1677161431324ee883-0"
-      ],
-      "settings": {
-        "product": "",
-        "color_scheme": "background-1",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "related-products": {
@@ -130,7 +110,6 @@
   },
   "order": [
     "main",
-    "72f38c22-2123-4c7e-95b0-c485ff186b53",
     "related-products"
   ]
 }
