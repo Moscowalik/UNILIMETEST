@@ -47,20 +47,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "04905482-a782-477a-8973-add80efb8c34": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.custom.testtitlemetafield.value }}",
-            "text_style": "body"
-          }
-        },
-        "63fb491b-f539-493a-b4b7-9a61e5ce8276": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.custom.testdescrmetafield.value }}",
-            "text_style": "body"
-          }
         }
       },
       "block_order": [
@@ -71,9 +57,7 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share",
-        "04905482-a782-477a-8973-add80efb8c34",
-        "63fb491b-f539-493a-b4b7-9a61e5ce8276"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
