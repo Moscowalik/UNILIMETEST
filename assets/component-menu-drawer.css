@@ -27,12 +27,22 @@ menu-drawer>details[open]>summary::before {
 }
 
 .site-box {
+  display: block;
+  width: 100%;
   transition: margin-left .5s;
 }
 
+
 .site-box.openMenu {
-  margin-left: 40rem;
+  margin-left: 20rem;
 }
+
+@media screen and (min-width: 500px) {
+  .site-box.openMenu {
+    margin-left: 40rem;
+  }
+}
+
 
 body.fixed {
   position: fixed;

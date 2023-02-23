@@ -24,6 +24,18 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    .product__information {
+      display: flex;
+      gap: 30px;
+      width: 50%;
+      margin: auto;
+      margin-top: 40px;
+    }
+
+    .product__information img {
+      width: 300px
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -307,7 +319,6 @@
                 block: block,
                 share_link: share_url
               %}
-
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- when 'buy_buttons' -%}
@@ -447,6 +458,16 @@
         {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
       </div>
     {%- endif -%}
+                  {%- if product.description != blank and product.title != blank -%}
+                <div class='product__information'>
+                  <div>
+                  <img src='https://picsum.photos/600'>
+                  </div>
+                  <div>
+                  <h3 class='product__information-title'>{{ product.title }}</h3>
+                 <p class='product__information-description'> {{ product.description }}</p></div>
+                </div>
+              {%- endif -%}
   </div>
 
   {% render 'product-media-modal' variant_images: variant_images %}

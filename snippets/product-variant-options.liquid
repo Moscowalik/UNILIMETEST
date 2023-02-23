@@ -59,7 +59,11 @@
         class="disabled"
       {% endif %}
     >
-    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+    <label
+      style="background-image:url({{ value  | file_url }})"
+      for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+    >
+      <img style="width: 16px" src="{{ product.variants[forloop.index0].featured_media  | img_url: "small" }}">
       {{ value -}}
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
