@@ -973,6 +973,7 @@ class VariantSelects extends HTMLElement {
     this.updatePickupAvailability();
     this.removeErrorMessage();
     this.updateVariantStatuses();
+    this.filterImgVariant();
 
     if (!this.currentVariant) {
       this.toggleAddButton(true, "", true);
@@ -983,6 +984,29 @@ class VariantSelects extends HTMLElement {
       this.updateVariantInput();
       this.renderProductInfo();
       this.updateShareUrl();
+    }
+  }
+
+  filterImgVariant() {
+    if (
+      this.currentVariant.featured_image &&
+      this.currentVariant.featured_image.alt
+    ) {
+      // show only thumbnails for the selected color
+      // [thumbnail-alt="red"]
+      document
+        .querySelectorAll("[thumbnail-alt]")
+        .forEach((img) => (img.style.display = "none"));
+      const currentImgAlt = this.currentVariant.featured_image.alt;
+      const thumbnailSelector = `[thumbnail-alt="${currentImgAlt}"]`;
+      document
+        .querySelectorAll(thumbnailSelector)
+        .forEach((img) => (img.style.display = "block"));
+    } else {
+      // show all thumbnail
+      document
+        .querySelectorAll("[thumbnail-alt]")
+        .forEach((img) => (img.style.display = "block"));
     }
   }
 
