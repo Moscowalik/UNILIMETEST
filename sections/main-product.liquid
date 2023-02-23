@@ -25,12 +25,13 @@
       }
     }
 
-    .product__information {
-      display: flex;
-      gap: 30px;
+    .metafield__block {
+      display: block;
+    text-align: center;
       width: 50%;
       margin: auto;
       margin-top: 40px;
+      border: 1px solid green 
     }
 
     .product__information img {
@@ -73,7 +74,8 @@
       {% render 'product-media-gallery', variant_images: variant_images %}
     </div>
     <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}">
-      <product-info
+      
+    <product-info
         id="ProductInfo-{{ section.id }}"
         data-section="{{ section.id }}"
         data-url="{{ product.url }}"
@@ -87,7 +89,7 @@
               {% render block %}
             {%- when 'text' -%}
               <p
-                class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                class="product__text {% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                 {{ block.shopify_attributes }}
               >
                 {{- block.settings.text -}}
@@ -451,28 +453,22 @@
           {% render 'icon-arrow' %}
         </a>
       </product-info>
+      
     </div>
+    <div class='metafield__block'>
+      {%- if product.metafields.custom.testtitlemetafield.value != blank -%}
+        <h3>{{ product.metafields.custom.testtitlemetafield.value }} </h3>
+{%- endif -%}
+      {%- if product.metafields.custom.testdescrmetafield.value != blank -%}
+        <p>{{ product.metafields.custom.testdescrmetafield.value }} </p>
+{%- endif -%}
+     </div>
     {%- if section.settings.media_position == 'right' -%}
       {% comment %} Duplicate gallery to display after product content on tablet/desktop breakpoint {% endcomment %}
       <div class="grid__item product__media-wrapper small-hide">
         {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
       </div>
     {%- endif -%}
-                <div class='product__information'>
-                  <div>
-                  <img src='https://picsum.photos/600'>
-                  </div>
-                  <div>
-                     {%- if product.title != blank -%}
-                  <h3 class='product__information-title'>{{ product.title }}</h3>
-                  {%- endif -%}
-                  {%- if product.description != blank -%}
-                 <p class='product__information-description'> {{ product.description }}</p>
-                 {%- endif -%}
-                </div>
-
-                </div>
-              
   </div>
 
   {% render 'product-media-modal' variant_images: variant_images %}
